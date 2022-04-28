@@ -21,10 +21,17 @@ const courseSchema = new mongoose.Schema({
 //build Course class model
 const Course = mongoose.model('Course', courseSchema);
 
-//build course object
-const course = new Course({
-  name: 'Node.js Course',
-  auther: 'bassem',
-  tags: ['node', 'backend'],
-  isPublished: true,
-});
+async function createCourse() {
+  //build course object
+  const course = new Course({
+    name: 'Angular Course',
+    auther: 'bassem',
+    tags: ['angular', 'frontend'],
+    isPublished: true,
+  });
+
+  //save to Db
+  const result = await course.save();
+  console.log(result);
+}
+createCourse();
